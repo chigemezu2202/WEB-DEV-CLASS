@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wireframe layout</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Navigation / Header -->
+    <header>
+        <div class="logo">APP</div>
+        <button class="menu-toggle" id="menuToggle">&#9776;</button>
+        <nav id="navMenu">
+            <ul>
+                <li><a href="#">Home</a></li>
+                <li><a href="#">About</a></li>
+                <li><a href="#">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <!-- Hero Section -->
+        <section class="hero">
+            <h1>Hero section</h1>
+        </section>
+
+        <!-- First Row: Description and Image -->
+        <section class="content-row">
+            <div class="description-box">
+                <h2>Description</h2>
+                <p>Insert description.</p>
+            </div>
+            <div class="image-box">
+                <span>Image</span>
+            </div>
+        </section>
+
+        <!-- Second Row: Image and Description -->
+        <!-- Note: We use the 'reverse' class to swap them on mobile -->
+        <section class="content-row reverse">
+            <div class="image-box">
+                <span>Image</span>
+            </div>
+            <div class="description-box">
+                <h2>Description</h2>
+                <p>Insert description</p>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer with mockup text lines -->
+    <footer>
+        <div class="footer-left">
+            <!-- First stacked column (Left) -->
+            <div class="footer-col">
+                <div class="text-line"></div>
+                <div class="text-line"></div>
+                <div class="text-line"></div>
+            </div>
+            
+            <!-- Second stacked column (Left center) -->
+            <div class="footer-col">
+                <div class="text-line"></div>
+                <div class="text-line"></div>
+                <div class="text-line"></div>
+            </div>
+        </div>
+        
+        <!-- Third stacked column (Far Right) -->
+        <div class="footer-col">
+            <div class="text-line"></div>
+            <div class="text-line"></div>
+            <div class="text-line"></div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

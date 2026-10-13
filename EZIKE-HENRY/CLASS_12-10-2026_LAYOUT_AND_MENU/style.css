@@ -1,0 +1,181 @@
+
+        /* Reset & Base Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: sans-serif;
+    line-height: 1.6;
+    color: #333;
+    background-color: #f9f9f9;
+}
+
+/* Header & Navigation */
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.5rem 5%;
+    background-color: #fff;
+    border-bottom: 1px solid #ddd;
+}
+
+.logo {
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    gap: 2rem;
+}
+
+nav a {
+    text-decoration: none;
+    color: #333;
+}
+
+/* Mobile Menu Button */
+.menu-toggle {
+    display: none;
+    background: none;
+    border: none;
+    font-size: 1.8rem;
+    cursor: pointer;
+    background-color: #555;
+    padding: 0.5rem 1rem;
+}
+
+/* Hero Section */
+.hero {
+    width: 90%;
+    max-width: 1200px;
+    margin: 2rem auto;
+    padding: 6rem 2rem;
+    background-color: #eaeaea;
+    text-align: center;
+    border: 1px solid #999;
+}
+
+.hero h1 {
+    font-weight: normal;
+    color: #555;
+}
+
+/* Content Rows (Two Columns) */
+.content-row {
+    display: flex;
+    width: 90%;
+    max-width: 1200px;
+    margin: 2rem auto;
+    gap: 2rem;
+}
+
+.description-box, .image-box {
+    flex: 1; /* Makes both columns take up equal space */
+    padding: 4rem 2rem;
+    border: 1px solid #999;
+    background-color: #fff;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    min-height: 250px;
+}
+
+.image-box {
+    background-color: #f0f0f0;
+    color: #888;
+    font-size: 1.2rem;
+}
+
+.description-box h2 {
+    font-weight: normal;
+    margin-bottom: 1rem;
+    color: #555;
+}
+
+/* Footer mimicking the drawn squiggly lines */
+footer {
+    display: flex;
+    justify-content: space-between;
+    padding: 3rem 5%;
+    background-color: #eaeaea;
+    border-top: 1px solid #999;
+    margin-top: 3rem;
+}
+
+.footer-left {
+    display: flex;
+    gap: 4rem;
+}
+
+.footer-col {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.text-line {
+    width: 150px;
+    height: 8px;
+    background-color: #bbb;
+    border-radius: 4px;
+}
+
+/* --- Media Queries for Responsiveness (Mobile Phones) --- */
+@media (max-width: 768px) {
+    header {
+        flex-wrap: wrap;
+    }
+
+    .menu-toggle {
+        display: block; /* Show hamburger icon */
+    }
+
+    nav {
+        display: none; /* Hide menu by default on mobile */
+        width: 100%;
+        margin-top: 1rem;
+    }
+
+    nav.active {
+        display: block; /* Class toggled by JavaScript */
+    }
+
+    nav ul {
+        flex-direction: column;
+        text-align: center;
+        gap: 1rem;
+    }
+
+    /* Stack content blocks vertically */
+    .content-row {
+        flex-direction: column;
+    }
+    
+    /* Ensure the second row flows Image -> Description even when stacked */
+    .content-row.reverse {
+        flex-direction: column;
+    }
+    footer {
+                flex-direction: column;
+                align-items: center;
+                gap: 2rem;
+            }
+
+            /* Add this block right here */
+            .footer-left {
+                flex-direction: column;
+                align-items: center;
+                gap: 2rem;
+            }
+
+    
+}
+  
