@@ -1,0 +1,490 @@
+/* 1. Predictable sizing */
+html {
+  box-sizing: border-box;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+/* 2. Remove browser-default spacing */
+* {
+  margin: 0;
+  padding: 0;
+}
+
+/* 3. Responsive media */
+img,
+picture,
+video,
+canvas,
+svg {
+  display: block;
+  max-width: 100%;
+}
+
+/* 4. A readable, consistent baseline */
+body {
+ min-height: 100vh;
+  font-family: var(--font-base);
+  line-height: 1.5;
+  background-color: var(--color-black);
+  color: var(--color-white);
+  overflow-x: auto;
+}
+
+/* 5. Keep form controls consistent with the page font */
+button,
+input,
+select,
+textarea {
+  font: inherit;
+}
+
+/* 6. SYNCЯA colour palette */
+:root {
+  --font-base: Arial, Helvetica, sans-serif;
+  color-scheme: dark;
+
+  --color-black: #0b0b0d;
+  --color-surface: #15171b;
+  --color-sky-blue: #75c9f5;
+  --color-white: #f5f7fa;
+  --color-muted: #b8c0ca;
+}
+
+
+.navigations {
+  max-width: 900px;              /* Shrinks the container width so things pull inward */
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 2rem;
+}
+.site-header {
+  background-color: var(--color-surface);
+  border-bottom: 1px solid rgba(184, 192, 202, 0.1);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+/* 1. Main Navigation Row (Flex container) */
+.nav-group {
+  display: flex;             /* Lines up Home, About, Contact horizontally */
+  align-items: center;
+  gap: 2rem;                 /* Space between main items */
+  list-style: none;          /* Removes default bullet points */
+}
+.nav-group.active {
+    right: 0;
+  }
+
+/* 2. Position parent for dropdowns */
+.nav-item {
+  position: relative;        /* Required so dropdown attaches to its item */
+}
+.nav-link,
+.nav-link:visited,
+.dropdown-menu a,
+.dropdown-menu a:visited {
+  color: var(--color-white);
+  text-decoration: none;
+  font-weight: 500;
+  transition: color var(--transition-smooth);
+}
+/* 3. Link Typography & Colors */
+.nav-link,
+.dropdown-menu a {
+  color: var(--color-white);
+  text-decoration: none;     /* Removes blue underlines */
+  font-weight: 500;
+  transition: color var(--transition-smooth);
+}
+
+.nav-link:hover,
+.dropdown-menu a:hover {
+  color: var(--color-sky-blue);
+}
+
+/* 4. Dropdown Menu (Hidden by default) */
+.dropdown-menu {
+  display: none;             /* Hides sub-menu until hovered */
+  position: absolute;
+  top: 100%;
+  right: 0;
+  left: 0;
+  background-color: var(--color-surface);
+  border: 1px solid rgba(184, 192, 202, 0.2);
+  border-radius: 6px;
+  list-style: none;          /* Removes bullet points from dropdown */
+  padding: 0.5rem 0;
+  min-width: 180px;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.4);
+  z-index: 10;
+}
+.dropdown-menu li {
+  padding: 0.25rem 1rem;
+}
+
+.dropdown-menu li {
+  padding: 0.25rem 1rem;
+}
+
+/* 5. Reveal Dropdown on Hover */
+.has-dropdown:hover .dropdown-menu {
+  display: block;            /* Shows sub-menu on hover */
+}
+.nav-group{
+    margin-left: 2rem;
+}
+.nav-link {
+  display: inline-flex;
+  align-items: center;      /* Vertically centers the icon with the text */
+  gap: 0.5rem;             /* Creates clean space between the icon and the text */
+  color: var(--color-white);
+  text-decoration: none;    /* Removes underlines */
+  font-weight: 500;
+  transition: color var(--transition-smooth);
+}
+   /* Keeps the logo locked in place and spaces out the individual menu items cleanly */
+.nav-group {
+    display: flex;
+    list-style: none;
+    gap: 2.5rem; /* Adjust this value to space out Home, About, and Contact */
+}
+/* Hidden on desktop */
+.hamburger-menu {
+  display: none;
+  background: transparent;
+  border: 0;
+  cursor: pointer;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 30px;
+  height: 22px;
+  padding: 0;
+  z-index: 102;
+}
+
+.hamburger-menu .bar {
+  display: block;
+  width: 100%;
+  height: 3px;
+  background-color: var(--color-white);
+  border-radius: 3px;
+  transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+@media (max-width: 768px) {
+  .hamburger-menu {
+    display: flex;
+  }
+}
+@media screen and (max-width: 768px) {
+  /* The hidden mobile drawer */
+  .nav-group {
+    display: flex;
+    flex-direction: column;
+    position: fixed;
+    top: 0;
+    right: -100%; /* Hidden completely off-screen to the right */
+    width: 75%;
+    max-width: 300px;
+    height: 100vh;
+    color: #f5f7fa;
+    background-color: #15171b;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 5rem 2rem 2rem 2rem;
+    gap: 1.5rem;
+    box-shadow: -5px 0 25px rgba(0, 0, 0, 0.8);
+    transition: right 0.3s ease-in-out;
+    z-index: 101;
+    overflow-y: auto; /* Allows scrolling if the phone screen is short */
+  }
+
+  /* When the JavaScript adds the 'active' class, slide it into view */
+  .nav-group.active {
+    right: 0;
+  }
+
+  /* Style the links inside the mobile drawer */
+  .nav-group .nav-link {
+    font-size: 1.1rem;
+    width: 100%;
+  }
+
+  /* Dropdown styling for mobile */
+  .dropdown-menu {
+    position: static;
+    display: none; /* Hidden by default until parent is clicked or active */
+    background: transparent;
+    border: none;
+    box-shadow: none;
+    padding-left: 1.5rem;
+    margin-top: 0.5rem;
+  }
+
+  /* Show dropdown when hovering or when active on mobile */
+  .has-dropdown:hover .dropdown-menu,
+  .has-dropdown.active .dropdown-menu {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+}
+.hero-section{
+   background-color: #75c9f5;
+  text-align: center;
+  margin-left: auto !important;
+  margin-right: auto !important;
+}
+#heading-paragraph {
+  color: #d4af37; /* Fallback color if the variable isn't set */
+  font-size: 1.15rem;                 /* Makes it slightly larger and easier to read */
+  line-height: 1.7;                   /* Gives breathing room between lines */
+  letter-spacing: 0.5px;              /* Spreads the letters slightly for a clean look */
+  max-width: 37.5rem;                   /* Keeps the paragraph from stretching too wide across the screen */
+  margin-top: 1rem;
+  margin-bottom: 2rem;
+  text-align: center;
+   margin-left: auto;
+  margin-right: auto;
+  font-family: 'Brush Script MT', cursive;
+}
+#header{
+   margin-left: auto;
+  margin-right: auto;
+  color: #a0a6b8;
+  font-size: 3.5rem;
+  letter-spacing: normal;
+  max-width: 50.5rem; 
+  text-align: center;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+#messi{
+  color: #f5f7fa;
+  font-size: 1.5rem; 
+  font-weight: 3.5rem;
+  font-family: Dancing Script; 
+}
+.overall{
+  background-color: aqua;
+}
+.class1 {
+  display: grid;
+  grid-template-columns: 1fr 1fr; /* Creates 2 equal columns */
+  gap: 2rem;                       /* Sets a 2rem space between image and text */
+  align-items: center;            /* Vertically centers image and text together */
+  max-width: 1000px;
+  margin: 0 auto;                 /* Centers the grid container on the screen */
+  padding: 2rem;
+  max-width: 62.5rem;
+  margin: 0 auto;
+}
+
+/* Ensure the image scales nicely inside its grid cell */
+.class1 img {
+  width: 100%;
+  height: auto;
+  border-radius: 12px;           /* Gives the picture smooth, rounded corners */
+}
+#second{
+  font-style: italic;
+  font-weight: 20rem;
+  font-style: italic;
+  font-weight: 500;               /* Correct font-weight syntax (use numbers 100-900) */
+  font-size: 1.25rem;             /* Makes it readable and proportional */
+  line-height: 1.8;               /* Gives text breathing room */
+  color: #ffffff;                 /* Pure white makes it pop against the blue background */
+}
+/* Styles for tablets and mobile screens (under 768px wide) */
+@media (max-width: 320px) {
+  .class1 {
+    grid-template-columns: 1fr; /* Switch from 2 columns to 1 single column */
+    gap: 2rem;
+    padding: 2rem 1rem;
+  }
+
+  /* Force the text box to display FIRST (on top) */
+  .text-card {
+    order: 1;
+    max-width: 100%; /* Allows the card to take full width on mobile */
+  }
+
+  /* Force the picture to display SECOND (below the text) */
+  .grid-image {
+    order: 2;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+  }
+
+  .class1 img {
+    height: auto; /* Adjust image height for smaller screens */
+    width: 100%;       /* Keeps original picture aspect ratio */
+  }
+}
+/* Ensure the image scales nicely inside its grid cell */
+.class2 div img {
+  width: 100%;
+  height: auto;
+  border-radius: 12px;           /* Gives the picture smooth, rounded corners */
+}
+.class2{
+  display: grid;
+   grid-template-columns: 1fr 1fr; /* Creates 2 equal columns */
+  gap: 2rem;                       /* Sets a 2rem space between image and text */
+  align-items: center;            /* Vertically centers image and text together */
+  max-width: 1000px;
+  margin: 0 auto;                 /* Centers the grid container on the screen */
+  padding: 2rem;
+  max-width: 62.5rem;
+  margin: 0 auto;
+}
+/* Media query for screens under 48rem (768px) */
+@media (max-width: 48rem) {
+  .class2 {
+    display: grid;
+    grid-template-columns: 1fr; /* Switch to a single column */
+    gap: 2rem;
+    padding: 2rem 1rem;
+  }
+
+  /* Target the text container inside class2 to display on TOP */
+  .class2 .text-card {
+    order: 1;
+    max-width: 100%;
+  }
+
+  /* Target the image container inside class2 to display BELOW the text */
+  .class2 .grid-image {
+    order: 2;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+  }
+
+ /* Media query for screens under 48rem (768px) */
+@media (max-width: 320px) {
+  .class2 {
+    display: grid;
+    grid-template-columns: 1fr; /* Switch to a single column */
+    gap: 2rem;
+    padding: 2rem 1rem;
+  }
+
+  /* Target the text container inside class2 to display on TOP */
+  .class2 .text-card {
+    order: 1;
+    max-width: 100%;
+  }
+
+  /* Target the image container inside class2 to display BELOW the text */
+  .class2 .grid-image {
+    order: 2;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+  }
+
+  .class2 div img {
+    max-height: 25rem; /* 400px equivalent in rem */
+    width: 100%;
+    border-radius: 0.75rem;
+  }
+}
+}
+.social{
+  display: flex;
+  margin-left: 65rem;
+}
+/* Base Footer Styles (Desktop) */
+.last {
+  background-color: var(--color-surface);
+  max-width: 75rem;       /* 1200px limit */
+  margin: 0 auto;         /* Centers the footer container */
+  padding: 3rem 1rem;
+  text-align: center;
+}
+
+.last-part {
+  display: flex;
+  flex-direction: column;
+  align-items: center;    /* Centers all child sections vertically */
+  gap: 1.5rem;            /* Clean uniform spacing between sections */
+}
+
+.footer-quote {
+  font-style: italic;
+  font-size: 1.1rem;
+  max-width: 40rem;
+}
+
+.social {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1.5rem;            /* Clean spacing between SVG icons */
+}
+
+.social svg {
+  transition: transform 0.2s ease;
+  cursor: pointer;
+}
+
+.social svg:hover {
+  transform: translateY(-3px); /* Subtle hover effect for polish */
+}
+
+#mess {
+  color: gold;
+  font-size: 1.2rem;
+  font-family: cursive;
+}
+
+.privacy {
+  display: flex;
+  justify-content: center;
+  gap: 1.5rem;
+}
+
+#right {
+  text-decoration: underline;
+  color: red;
+  cursor: pointer;
+}
+
+#privacy {
+  cursor: pointer;
+}
+
+/* Mobile Media Query (under 48rem / 768px) */
+@media (max-width: 48rem) {
+  .last {
+    padding: 2rem 1rem;
+  }
+
+  .last-part {
+    gap: 1.25rem;
+  }
+
+  .footer-quote {
+    font-size: 0.95rem;
+  }
+
+  .social {
+    gap: 1.2rem;
+  }
+
+  .privacy {
+    flex-direction: row;  /* Keeps Copyright and Privacy side-by-side on mobile */
+    gap: 1rem;
+    font-size: 0.9rem;
+  }
+}
+
